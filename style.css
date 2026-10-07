@@ -1,0 +1,413 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+
+/* =========================
+   FONDO
+========================= */
+
+body {
+    font-family: "Comic Sans MS", cursive;
+    background:
+        radial-gradient(
+            circle at center,
+            #26001d 0%,
+            #10000d 40%,
+            #000000 100%
+        );
+}
+
+
+/* CANVAS DE ESTRELLAS */
+
+#espacio {
+    position: fixed;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    z-index: 0;
+}
+
+
+/* =========================
+   ESCENA 3D
+========================= */
+
+.escena {
+
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+
+    perspective: 1000px;
+
+    transform-style: preserve-3d;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+
+/* =========================
+   TÍTULO
+========================= */
+
+.titulo {
+
+    position: absolute;
+
+    top: 7%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: white;
+
+    font-size: clamp(
+        35px,
+        7vw,
+        65px
+    );
+
+    white-space: nowrap;
+
+    z-index: 100;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 20px #9b00ff,
+        0 0 40px #9b00ff;
+}
+
+
+.titulo span {
+
+    color: #9b00ff;
+
+}
+
+
+.titulo b {
+
+    color: #9b00ff;
+
+    font-size: 1.1em;
+
+    text-shadow:
+        0 0 10px #9b00ff,
+        0 0 30px #9b00ff,
+        0 0 60px #9b00ff;
+
+}
+
+
+/* =========================
+   UNIVERSO DE FRASES
+========================= */
+
+.universo {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    transform-style: preserve-3d;
+
+    animation:
+        rotarUniverso
+        18s
+        linear
+        infinite;
+
+}
+
+
+/* GIRO COMPLETO DEL UNIVERSO */
+
+@keyframes rotarUniverso {
+
+    from {
+
+        transform:
+            rotateX(0deg)
+            rotateY(0deg)
+            rotateZ(0deg);
+
+    }
+
+    to {
+
+        transform:
+            rotateX(360deg)
+            rotateY(360deg)
+            rotateZ(360deg);
+
+    }
+
+}
+
+
+/* =========================
+   FRASES
+========================= */
+
+.frase {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    color: #ffb9e4;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    transform-style: preserve-3d;
+
+    text-shadow:
+        0 0 5px #9b00ff,
+        0 0 12px #9b00ff,
+        0 0 20px #9b00ff;
+
+    transition: opacity 0.5s;
+
+}
+
+
+/* =========================
+   CORAZÓN
+========================= */
+
+.corazon {
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-45deg);
+
+    background: #9b00ff;
+
+    z-index: 50;
+
+    box-shadow:
+
+        0 0 15px #9b00ff,
+        0 0 30px #9b00ff,
+        0 0 60px #9b00ff,
+        0 0 100px #9b00ff;
+
+    animation:
+
+        latido
+        1.5s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* PARTE SUPERIOR DEL CORAZÓN */
+
+.corazon::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    top: -95px;
+    left: 0;
+
+    background: #9b00ff;
+
+    border-radius: 50%;
+
+}
+
+
+/* PARTE DERECHA */
+
+.corazon::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    top: 0;
+    left: 95px;
+
+    background: #9b00ff;
+
+    border-radius: 50%;
+
+}
+
+
+/* BRILLO */
+
+.corazon-brillo {
+
+    position: absolute;
+
+    width: 25px;
+    height: 60px;
+
+    background: rgba(255,255,255,0.5);
+
+    border-radius: 50%;
+
+    top: 35px;
+    left: 40px;
+
+    filter: blur(5px);
+
+    z-index: 10;
+
+}
+
+
+/* LATIDO */
+
+@keyframes latido {
+
+    0% {
+
+        transform:
+            translate(-50%, -50%)
+            rotate(-45deg)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            translate(-50%, -50%)
+            rotate(-45deg)
+            scale(1.1);
+
+    }
+
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            rotate(-45deg)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================
+   MENSAJE INFERIOR
+========================= */
+
+.mensaje {
+
+    position: absolute;
+
+    left: 50%;
+    top: 72%;
+
+    transform:
+        translateX(-50%);
+
+    color: white;
+
+    font-size: 17px;
+
+    white-space: nowrap;
+
+    z-index: 100;
+
+    text-shadow:
+
+        0 0 8px #ff1493,
+        0 0 20px #ff1493,
+        0 0 35px #ff1493;
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media(max-width: 600px) {
+
+    .corazon {
+
+        width: 130px;
+        height: 130px;
+
+    }
+
+    .corazon::before {
+
+        width: 130px;
+        height: 130px;
+
+        top: -65px;
+
+    }
+
+    .corazon::after {
+
+        width: 130px;
+        height: 130px;
+
+        left: 65px;
+
+    }
+
+    .frase {
+
+        font-size: 9px;
+
+    }
+
+    .mensaje {
+
+        font-size: 13px;
+
+    }
+
+}
